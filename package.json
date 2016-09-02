@@ -1,0 +1,33 @@
+{
+  "name": "intern-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "http-server -p 8080",
+    "jshint": "jshint src",
+    "jscs": "jscs src",
+    "mocha": "mocha",
+    "wdio": "node_modules/.bin/wdio wdio.conf.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "http-server": "^0.9.0",
+    "isomorphic-fetch": "^2.2.1",
+    "jscs": "^3.0.7",
+    "jshint": "^2.9.2",
+    "mocha": "^3.0.2",
+    "requirejs": "^2.2.0",
+    "selenium-standalone": "^5.6.1",
+    "systemjs": "^0.19.37",
+    "wdio-mocha-framework": "^0.4.0",
+    "wdio-selenium-standalone-service": "0.0.6",
+    "wdio-spec-reporter": "0.0.3",
+    "webdriverio": "^4.2.8"
+  },
+  "dependencies": {
+    "es6-promise": "^3.2.1"
+  }
+}
