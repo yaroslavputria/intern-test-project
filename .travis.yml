@@ -5,10 +5,17 @@ before_script:
   - npm run jshint
   - npm run jscs
   - npm run mocha
-  - export CHROME_BIN=chromium-browser
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - sleep 3 # give xvfb some time to start
+  # - export CHROME_BIN=chromium-browser
+  # - export DISPLAY=:99.0
+  # - sh -e /etc/init.d/xvfb start
+  # - sleep 3 # give xvfb some time to start
 #  - java -jar selenium-server-standalone-2.53.1.jar & npm start & npm run wdio
+  - sudo apt-get update 
+  - sudo apt-get install google-chrome-stable
+  - wget http://chromedriver.storage.googleapis.com/2.23/chromedriver_linux64.zip
+  - unzip chromedriver_linux64.zip
   - selenium-standalone install
-  - selenium-standalone start & npm start & npm run wdio
+  - nohup sudo Xvfb :10 -ac
+  - export DISPLAY=:10
+#java -jar vendor/se/selenium-server-standalone/bin/selenium-server-standalone.jar -Dwebdriver.chrome.bin="/usr/bin/google-chrome" -Dwebdriver.chrome.driver="vendor/bin/chromedriver"
+  - selenium-standalone start -Dwebdriver.chrome.bin="/usr/bin/google-chrome" -Dwebdriver.chrome.driver="vendor/bin/chromedriver" & npm start & npm run wdio
