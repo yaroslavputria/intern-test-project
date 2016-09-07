@@ -3,7 +3,7 @@ exports.config = {
     /**
      * server configurations
      */
-    host: '0.0.0.0',
+    host: 'http://hub-cloud.browserstack.com',
     port: 4444,
 
     /**
