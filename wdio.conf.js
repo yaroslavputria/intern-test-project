@@ -29,6 +29,14 @@ exports.config = {
      */
     user: 'ihorpavlenko1',
     key:  'uXr97yr9u73mfmRtAyZh',
+    desiredCapabilities: {
+        browserName: 'chrome',
+        project: 'myApp',
+        version: '44.0',
+        build: 'myApp #' + process.env.TRAVIS_BUILD_NUMBER + '.' + process.env.TRAVIS_JOB_NUMBER,
+        'browserstack.local': 'true',
+        'browserstack.debug': 'true'
+    },
     sync: true,
     //logLevel: 'verbose',
     coloredLogs: true,
