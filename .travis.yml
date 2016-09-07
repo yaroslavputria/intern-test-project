@@ -2,9 +2,10 @@ language: node_js
 node_js:
   - "5"
 install:
-  - npm install
+ - npm install
+ - selenium-standalone install
 script:
   - npm run jshint
   - npm run jscs
   - npm run mocha
-  - npm run wdio
+  - selenium-standalone start & npm run wdio
