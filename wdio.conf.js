@@ -3,8 +3,6 @@ exports.config = {
     /**
      * server configurations
      */
-    host: 'http://hub-cloud.browserstack.com',
-    path: '/wd/hub',
     /**
      * specify test files
      */
