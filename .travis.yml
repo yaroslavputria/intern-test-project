@@ -1,14 +1,29 @@
 language: node_js
 node_js:
   - "5"
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+before_install:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3 # give xvfb some time to start
 before_script:
   - npm run jshint
   - npm run jscs
   - npm run mocha
-#  - export CHROME_BIN=chromium-browser
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - sleep 3 # give xvfb some time to start
-#  - java -jar selenium-server-standalone-2.53.1.jar & npm start & npm run wdio
+  #- java -jar selenium-server-standalone-2.53.1.jar & npm start & npm run wdio
+  #npm start & npm run wdio
+install:
+  - npm install
   - selenium-standalone install
-  - selenium-standalone start & npm start & npm run wdio
+  - selenium-standalone start
+script:
+  - npm run jshint
+  - npm run jscs
+  - npm run mocha
+  - npm start & npm run wdio
+  
