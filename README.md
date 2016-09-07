@@ -9,4 +9,4 @@
 
 open browser at [link](http://localhost:8080)
 
-[![Build Status](https://travis-ci.org/yaroslavputria/intern-test-project.svg?branch=master)](https://travis-ci.org/yaroslavputria/intern-test-project)
+[![Build Status](https://travis-ci.org/my8bit/intern-test-project.svg?branch=master)](https://travis-ci.org/my8bit/intern-test-project)
