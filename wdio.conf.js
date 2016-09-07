@@ -21,7 +21,7 @@ exports.config = {
      * capabilities
      */
     capabilities: [{
-        browserName: 'chrome'
+        browserName: 'firefox'
     }],
     //services: ['phantomjs'],
     /**
