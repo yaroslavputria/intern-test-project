@@ -1,9 +1,9 @@
 language: node_js
 node_js:
   - "5"
-addons:		 +#addons:
-  browserstack:		 +#  browserstack:
-    username: "ihorpavlenko1"		 +#    username: "ihorpavlenko1"
+addons:
+  browserstack:
+    username: "ihorpavlenko1"
     access_key: "uXr97yr9u73mfmRtAyZh"
     forcelocal: true
 install:
