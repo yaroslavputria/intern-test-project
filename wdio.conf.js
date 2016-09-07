@@ -27,6 +27,8 @@ exports.config = {
     /**
      * test configurations
      */
+    user: ihorpavlenko1,
+    key: uXr97yr9u73mfmRtAyZh,
     sync: true,
     //logLevel: 'verbose',
     coloredLogs: true,
