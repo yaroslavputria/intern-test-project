@@ -1,10 +1,10 @@
 language: node_js
 node_js:
   - "5"
-addons:
-  browserstack:
-    username: "ihorpavlenko1"
-    access_key: "uXr97yr9u73mfmRtAyZh"
+#addons:
+#  browserstack:
+#    username: "ihorpavlenko1"
+#    access_key: "uXr97yr9u73mfmRtAyZh"
 install:
  - npm install
  - selenium-standalone install
