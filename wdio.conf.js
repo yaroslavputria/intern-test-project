@@ -4,8 +4,7 @@ exports.config = {
      * server configurations
      */
     host: 'http://hub-cloud.browserstack.com',
-    port: 4444,
-
+    
     /**
      * specify test files
      */
