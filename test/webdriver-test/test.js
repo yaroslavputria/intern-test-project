@@ -2,6 +2,10 @@ var chai = require('chai');
 global.expect = chai.expect;
 chai.Should();
 describe('Webdriver tests:', function () {
+  var os = require('os');
+  var networkInterfaces = os.networkInterfaces();
+  console.log('IP IS');
+  console.log( networkInterfaces );
   it('must be 5 files with chosen criteria', function () {
     browser.url('http://localhost:8080');
     browser.waitForExist('#userName');
