@@ -8,7 +8,7 @@
     "jshint": "jshint src",
     "jscs": "jscs src",
     "mocha": "mocha",
-    "wdio": "node_modules/.bin/wdio wdio.conf.js"
+    "wdio": "node_modules/.bin/wdio test/webdriver-test/wdio.conf.js"
   },
   "author": "",
   "license": "ISC",

@@ -1,20 +1,36 @@
 exports.config = {
 
+    /**
+     * server configurations
+     */
     host: 'localhost',
     port: 4444,
 
+    /**
+     * specify test files
+     */
     specs: [
-        'test.js'
+        'test/webdriver-test/test.js'
     ],
+    // exclude: [
+    //     'test/spec/multibrowser/**',
+    //     'test/spec/mobile/**'
+    // ],
 
+    /**
+     * capabilities
+     */
     capabilities: [{
         browserName: 'phantomjs'
     }],
     //services: ['phantomjs'],
+    /**
+     * test configurations
+     */
     sync: true,
     logLevel: 'silent',
     coloredLogs: true,
-    waitforTimeout: 60000,
+    waitforTimeout: 15000,
     framework: 'mocha',
 
     reporters: ['spec'],
@@ -26,6 +42,9 @@ exports.config = {
         ui: 'bdd'
     },
 
+    /**
+     * hooks
+     */
     onPrepare: function() {
         console.log('let\'s go');
     },
