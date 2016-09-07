@@ -24,7 +24,7 @@ exports.config = {
         'browserName' : 'Chrome',
         'os' : 'Windows',
         'os_version' : '7',
-        'resolution' : '1280x1024'
+        'resolution' : '1280x1024',
         'browser_version' : '52.0',
         'build': 'myApp #' + process.env.TRAVIS_BUILD_NUMBER + '.' + process.env.TRAVIS_JOB_NUMBER,
         //'browserstack.local': 'true',
