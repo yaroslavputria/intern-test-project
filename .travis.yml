@@ -4,8 +4,7 @@ node_js:
 install:
  - npm install
 before_script:
-  - http-server -p 8080
-  - sleep 3
+  - http-server -p 8080 & sleep 3
 script:
   - npm run jshint
   - npm run jscs
