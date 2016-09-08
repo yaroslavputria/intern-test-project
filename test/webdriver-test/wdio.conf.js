@@ -46,9 +46,9 @@ exports.config = {
     waitforTimeout: 30000,
     //waitforInterval: 30000,
     framework: 'mocha',
-    mochaOpts: {
-        timeout: 60000
-    },
+    // mochaOpts: {
+    //     timeout: 60000
+    // },
 
     reporters: ['spec'],
     reporterOptions: {
