@@ -2,7 +2,7 @@ var chai = require('chai');
 global.expect = chai.expect;
 chai.Should();
 describe('Webdriver tests:', function () {
-  this.timeout(60000);
+  this.timeout(180000);
   it('must be 5 files with chosen criteria', function () {
     browser.url('http://localhost:8080');
     browser.waitForExist('#userName');
