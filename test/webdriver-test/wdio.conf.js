@@ -23,6 +23,11 @@ exports.config = {
     capabilities: [{
         browserName: 'chrome'
     }],
+
+    services: ['selenium-standalone'],
+    user: process.env.SAUCE_USERNAME,
+    key: process.env.SAUCE_ACCESS_KEY,
+    sauceConnect: true,
     //services: ['phantomjs'],
     /**
      * test configurations
