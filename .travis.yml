@@ -5,4 +5,8 @@ node_js:
 install:
  - npm i
 before_script:
+  - npm run jshint
+  - npm run jscs
+  - npm run mocha
+  - selenium-standalone install
   - npm start & npm run wdio
