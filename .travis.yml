@@ -1,4 +1,3 @@
-sudo: required
 language: node_js
 node_js:
   - "5"
@@ -8,5 +7,4 @@ before_script:
   - npm run jshint
   - npm run jscs
   - npm run mocha
-  - selenium-standalone install
   - npm start & npm run wdio
