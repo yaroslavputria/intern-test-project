@@ -3,7 +3,7 @@ exports.config = {
     /**
      * server configurations
      */
-    host: 'localhost',
+    host: '127.0.0.1',
     port: 4444,
 
     /**
@@ -24,19 +24,31 @@ exports.config = {
         browserName: 'chrome'
     }],
 
-    services: ['selenium-standalone'],
-    user: process.env.SAUCE_USERNAME,
-    key: process.env.SAUCE_ACCESS_KEY,
+    desiredCapabilities: [{
+        browserName: 'chrome',
+        version: '27.0',
+        platform: 'XP',
+        'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+        name: 'integration',
+        build: process.env.TRAVIS_BUILD_NUMBER
+    }],
+
+    services: ['sauce'],
+    user: "yaroslavputria",
+    key: "e3f7b71c-1eb3-47b1-bc30-60dad6b75093",
     sauceConnect: true,
     //services: ['phantomjs'],
     /**
      * test configurations
      */
-    sync: true,
     logLevel: 'silent',
     coloredLogs: true,
-    waitforTimeout: 15000,
+    waitforTimeout: 30000,
+    //waitforInterval: 30000,
     framework: 'mocha',
+    mochaOpts: {
+        timeout: 60000
+    },
 
     reporters: ['spec'],
     reporterOptions: {
