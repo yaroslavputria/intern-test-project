@@ -22,7 +22,7 @@ exports.config = {
     sauceConnect: true,
     logLevel: 'silent',
     coloredLogs: true,
-    waitforTimeout: 60000,
+    waitforTimeout: 120000,
     framework: 'mocha',
     reporters: ['spec'],
     reporterOptions: {
