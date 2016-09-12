@@ -70,7 +70,9 @@ define(function () {
   };
 
   Model.prototype.filterByName = function (arrOfFiles) {
-    return arrOfFiles.map(file => file.filename);
+    return arrOfFiles.map(function (file) {
+      return file.filename;
+    });
   };
 
   return Model;

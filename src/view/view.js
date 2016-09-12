@@ -1,13 +1,18 @@
 'use strict';
 define(function () {
-  function View() {
-
+  function View(model) {
+    this.model = model;
   }
 
-  View.prototype.render = function () {
+  View.prototype.render = function (rootEl) {
+    if (!rootEl) {
+      rootEl = document.body;
+    }
+
+    var _this = this;
     var h1 = document.createElement('h1');
     h1.textContent = 'View works :)';
-    document.body.appendChild(h1);
+    rootEl.appendChild(h1);
     console.log('Render');
 
     var form = document.createElement('form');
@@ -32,10 +37,26 @@ define(function () {
     </label><br>
    
     <button type="button" id="sendRequest">Send</button>`;
-    document.body.appendChild(form);
+    rootEl.appendChild(form);
+
+    var sendReq = rootEl.querySelector('#sendRequest');
+    sendReq.addEventListener('click', function (e) {
+      e.preventDefault();
+      var userName = document.getElementById('userName');
+      var type = document.getElementById('type');
+      var lang = document.getElementById('lang');
+      _this.model.getAllGists(userName.value)
+      .then(function (gists) {
+        console.log(gists);
+        var filteredGists = _this.model.filterFiles(gists, type.value, lang.value);
+        var fileNames = _this.model.filterByName(filteredGists);
+        console.log(fileNames);
+        _this.tmpAppendListOfName(fileNames, rootEl);
+      });
+    });
   };
 
-  View.prototype.tmpAppendListOfName = function (list) {
+  View.prototype.tmpAppendListOfName = function (list, rootEl) {
     var ul = document.createElement('ul');
     ul.id = 'listOfFiles';
     list.map(function (item) {
@@ -44,7 +65,7 @@ define(function () {
       ul.appendChild(tmpLi);
     });
 
-    document.body.appendChild(ul);
+    rootEl.appendChild(ul);
   };
 
   return View;

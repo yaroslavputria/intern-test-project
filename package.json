@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "http-server -p 8080",
+    "start": "http-server -p 8081",
     "jshint": "jshint src",
     "jscs": "jscs src",
     "mocha": "mocha",
