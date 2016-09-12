@@ -47,10 +47,8 @@ define(function () {
       var lang = document.getElementById('lang');
       _this.model.getAllGists(userName.value)
       .then(function (gists) {
-        console.log(gists);
         var filteredGists = _this.model.filterFiles(gists, type.value, lang.value);
         var fileNames = _this.model.filterByName(filteredGists);
-        console.log(fileNames);
         _this.tmpAppendListOfName(fileNames, rootEl);
       });
     });
