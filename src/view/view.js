@@ -56,6 +56,11 @@ define(function () {
 
   View.prototype.tmpAppendListOfName = function (list, rootEl) {
     var ul = document.createElement('ul');
+    var prevUl = rootEl.querySelector('#listOfFiles');
+    if (prevUl) {
+      prevUl.remove();
+    }
+
     ul.id = 'listOfFiles';
     list.map(function (item) {
       var tmpLi = document.createElement('li');
