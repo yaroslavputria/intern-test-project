@@ -40,18 +40,8 @@ define(function () {
     rootEl.appendChild(form);
   };
 
-  View.prototype.render = function (rootEl) {
-    var arrLangs = ['JSON', 'JavaScript', 'Text', 'Markdown'];
-    var arrTypes = ['application/json', 'application/javascript', 'text/plain'];
-    if (!rootEl) {
-      rootEl = document.body;
-    }
-
-    var _this = this;
-
-    this._renderForm(arrLangs, arrTypes, rootEl);
-
-    var sendReq = rootEl.querySelector('#sendRequest');
+  View.prototype._addProcessingListener = function (btnId, rootEl, _this) {
+    var sendReq = rootEl.querySelector(btnId);
     sendReq.addEventListener('click', function (e) {
       e.preventDefault();
       var userName = document.getElementById('userName');
@@ -64,7 +54,17 @@ define(function () {
         _this.tmpAppendListOfName(fileNames, rootEl);
       });
     });
+  };
 
+  View.prototype.render = function (rootEl) {
+    var arrLangs = ['JSON', 'JavaScript', 'Text', 'Markdown'];
+    var arrTypes = ['application/json', 'application/javascript', 'text/plain'];
+    if (!rootEl) {
+      rootEl = document.body;
+    }
+
+    this._renderForm(arrLangs, arrTypes, rootEl);
+    this._addProcessingListener('#sendRequest', rootEl, this);
     console.log('Render');
   };
 
