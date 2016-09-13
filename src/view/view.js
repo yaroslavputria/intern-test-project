@@ -5,8 +5,7 @@ define(function () {
   }
 
   View.prototype._appendListItems = function (list, itemNames) {
-    var tmpItem = document.createElement('option');
-    list.appendChild(tmpItem);
+    var tmpItem;
     itemNames.forEach(function (itemName) {
       tmpItem = document.createElement('option');
       tmpItem.textContent = itemName;
@@ -57,8 +56,8 @@ define(function () {
   };
 
   View.prototype.render = function (rootEl) {
-    var arrLangs = ['JSON', 'JavaScript', 'Text', 'Markdown'];
-    var arrTypes = ['application/json', 'application/javascript', 'text/plain'];
+    var arrLangs = ['', 'JSON', 'JavaScript', 'Text', 'Markdown'];
+    var arrTypes = ['', 'application/json', 'application/javascript', 'text/plain'];
     if (!rootEl) {
       rootEl = document.body;
     }

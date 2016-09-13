@@ -19,19 +19,19 @@ define(function () {
   };
 
   Model.prototype.filterFiles = function (array, type, language) {
-    var result = [];
+    var arrOfFiles = [];
     for (var i = 0; i < array.length; i++) {
       for (var prop in array[i].files) {
         if (array[i].files.hasOwnProperty(prop)) {
           var property = array[i].files[prop];
           if ((!type || property.type === type) && (!language || property.language === language)) {
-            result.push(property);
+            arrOfFiles.push(property);
           }
         }
       }
     }
 
-    return result;
+    return arrOfFiles;
   };
 
   Model.prototype.filterByName = function (arrOfFiles) {
