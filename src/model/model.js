@@ -18,49 +18,6 @@ define(function () {
     });
   };
 
-  // Model.prototype._filterGist = function (arrOfGists, arrOfFiles, func) {
-  //   arrOfGists.forEach(function (gist) {
-  //     for (var prop in gist.files) {
-  //       if (gist.files.hasOwnProperty(prop)) {
-  //         if (func(gist.files[prop])) {
-  //           arrOfFiles.push(gist.files[prop]);
-  //         }
-  //       }
-  //     }
-  //   });
-  // };
-
-  // Model.prototype.filterFiles = function (arrOfGists, type, lang) {
-  //   if (Array.isArray(arrOfGists)) {
-  //     var arrOfFiles = [];
-  //     if (type) {
-  //       if (lang) {
-  //         this._filterGist(arrOfGists, arrOfFiles, function (file) {
-  //           return (file.type === type && file.language === lang);
-  //         });
-  //       } else {
-  //         this._filterGist(arrOfGists, arrOfFiles, function (file) {
-  //           return (file.type === type);
-  //         });
-  //       }
-  //     } else {
-  //       if (lang) {
-  //         this._filterGist(arrOfGists, arrOfFiles, function (file) {
-  //           return (file.language === lang);
-  //         });
-  //       } else {
-  //         this._filterGist(arrOfGists, arrOfFiles, function (file) {
-  //           return true;
-  //         });
-  //       }
-  //     }
-
-  //     return arrOfFiles;
-  //   } else {
-  //     throw new Error('wrong input data');
-  //   }
-  // };
-
   Model.prototype.filterFiles = function (array, type, language) {
     var result = [];
     for (var i = 0; i < array.length; i++) {
