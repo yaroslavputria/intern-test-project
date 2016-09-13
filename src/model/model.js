@@ -13,60 +13,68 @@ define(function () {
       method: 'GET',
       mode: 'cors',
     })
-    .then(res => res.json());
+    .then(function (res) {
+      return res.json();
+    });
   };
 
-  Model.prototype.filterFiles = function (arrOfGists, type, lang) {
-    if ({}.toString.call(arrOfGists).slice(8, -1) === 'Array') {
-      var arrOfFiles = [];
-      if (type) {
-        if (lang) {
-          arrOfGists.forEach(function (gist) {
-            for (var prop in gist.files) {
-              if (gist.files.hasOwnProperty(prop)) {
-                if (gist.files[prop].type === type && gist.files[prop].language === lang) {
-                  arrOfFiles.push(gist.files[prop]);
-                }
-              }
-            }
-          });
-        } else {
-          arrOfGists.forEach(function (gist) {
-            for (var prop in gist.files) {
-              if (gist.files.hasOwnProperty(prop)) {
-                if (gist.files[prop].type === type) {
-                  arrOfFiles.push(gist.files[prop]);
-                }
-              }
-            }
-          });
-        }
-      } else {
-        if (lang) {
-          arrOfGists.forEach(function (gist) {
-            for (var prop in gist.files) {
-              if (gist.files.hasOwnProperty(prop)) {
-                if (gist.files[prop].language === lang) {
-                  arrOfFiles.push(gist.files[prop]);
-                }
-              }
-            }
-          });
-        } else {
-          arrOfGists.forEach(function (gist) {
-            for (var prop in gist.files) {
-              if (gist.files.hasOwnProperty(prop)) {
-                arrOfFiles.push(gist.files[prop]);
-              }
-            }
-          });
+  // Model.prototype._filterGist = function (arrOfGists, arrOfFiles, func) {
+  //   arrOfGists.forEach(function (gist) {
+  //     for (var prop in gist.files) {
+  //       if (gist.files.hasOwnProperty(prop)) {
+  //         if (func(gist.files[prop])) {
+  //           arrOfFiles.push(gist.files[prop]);
+  //         }
+  //       }
+  //     }
+  //   });
+  // };
+
+  // Model.prototype.filterFiles = function (arrOfGists, type, lang) {
+  //   if (Array.isArray(arrOfGists)) {
+  //     var arrOfFiles = [];
+  //     if (type) {
+  //       if (lang) {
+  //         this._filterGist(arrOfGists, arrOfFiles, function (file) {
+  //           return (file.type === type && file.language === lang);
+  //         });
+  //       } else {
+  //         this._filterGist(arrOfGists, arrOfFiles, function (file) {
+  //           return (file.type === type);
+  //         });
+  //       }
+  //     } else {
+  //       if (lang) {
+  //         this._filterGist(arrOfGists, arrOfFiles, function (file) {
+  //           return (file.language === lang);
+  //         });
+  //       } else {
+  //         this._filterGist(arrOfGists, arrOfFiles, function (file) {
+  //           return true;
+  //         });
+  //       }
+  //     }
+
+  //     return arrOfFiles;
+  //   } else {
+  //     throw new Error('wrong input data');
+  //   }
+  // };
+
+  Model.prototype.filterFiles = function (array, type, language) {
+    var result = [];
+    for (var i = 0; i < array.length; i++) {
+      for (var prop in array[i].files) {
+        if (array[i].files.hasOwnProperty(prop)) {
+          var property = array[i].files[prop];
+          if ((!type || property.type === type) && (!language || property.language === language)) {
+            result.push(property);
+          }
         }
       }
-
-      return arrOfFiles;
-    } else {
-      throw new Error('wrong input data');
     }
+
+    return result;
   };
 
   Model.prototype.filterByName = function (arrOfFiles) {

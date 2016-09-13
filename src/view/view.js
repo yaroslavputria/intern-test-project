@@ -4,40 +4,52 @@ define(function () {
     this.model = model;
   }
 
+  View.prototype._appendListItems = function (list, itemNames) {
+    var tmpItem = document.createElement('option');
+    list.appendChild(tmpItem);
+    itemNames.forEach(function (itemName) {
+      tmpItem = document.createElement('option');
+      tmpItem.textContent = itemName;
+      tmpItem.value = itemName;
+      list.appendChild(tmpItem);
+    });
+  };
+
+  View.prototype._renderForm = function (arrLangs, arrTypes, rootEl) {
+    var form = document.createElement('form');
+    var nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.id = 'userName';
+    form.appendChild(nameInput);
+
+    var selLangs = document.createElement('select');
+    selLangs.id = 'lang';
+    this._appendListItems(selLangs, arrLangs);
+    form.appendChild(selLangs);
+
+    var selTypes = document.createElement('select');
+    selTypes.id = 'type';
+    this._appendListItems(selTypes, arrTypes);
+    form.appendChild(selTypes);
+
+    var btn = document.createElement('button');
+    btn.textContent = 'Send';
+    btn.id = 'sendRequest';
+    form.appendChild(btn);
+
+    rootEl.appendChild(form);
+  };
+
   View.prototype.render = function (rootEl) {
+    var arrLangs = ['JSON', 'JavaScript', 'Text', 'Markdown'];
+    var arrTypes = ['application/json', 'application/javascript', 'text/plain'];
     if (!rootEl) {
       rootEl = document.body;
     }
 
     var _this = this;
-    var h1 = document.createElement('h1');
-    h1.textContent = 'View works :)';
-    rootEl.appendChild(h1);
-    console.log('Render');
 
-    var form = document.createElement('form');
-    form.innerHTML = `
-     <label> user name:<br>
-    <input type = "text" id="userName">
-    </label><br>
-    <label> lang:<br>
-    <select name="lang" id="lang">
-    <option value="JSON">JSON</option> 
-    <option value="JavaScript">JavaScript</option>
-    <option value="Text">Text</option>
-    <option value="Markdown">Markdown</option>
-    </select>
-    </label><br>
-    <label> type:<br>
-    <select name="type" id="type">
-    <option value="application/json">application/json</option> 
-    <option value="application/javascript">application/javascript</option>
-    <option value="text/plain">text/plain</option>
-    </select>
-    </label><br>
-   
-    <button type="button" id="sendRequest">Send</button>`;
-    rootEl.appendChild(form);
+    this._renderForm(arrLangs, arrTypes, rootEl);
 
     var sendReq = rootEl.querySelector('#sendRequest');
     sendReq.addEventListener('click', function (e) {
@@ -52,6 +64,8 @@ define(function () {
         _this.tmpAppendListOfName(fileNames, rootEl);
       });
     });
+
+    console.log('Render');
   };
 
   View.prototype.tmpAppendListOfName = function (list, rootEl) {
