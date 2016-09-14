@@ -1,7 +1,8 @@
 'use strict';
 
 var ROOT_EL = document.body;
-require(['./src/model/model.js', './src/view/form.js', './src/view/results.js'], function (Model, Form, View) {
+require(['./src/model/model.js', './src/view/form.js', './src/view/results.js'],
+function (Model, Form, View) {
   var model = new Model();
 
   var form = new Form({
