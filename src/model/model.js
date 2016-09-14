@@ -18,12 +18,12 @@ define(function () {
     });
   };
 
-  Model.prototype.filterFiles = function (array, type, language) {
+  Model.prototype.filterFiles = function (gists, type, language) {
     var arrOfFiles = [];
-    for (var i = 0; i < array.length; i++) {
-      for (var prop in array[i].files) {
-        if (array[i].files.hasOwnProperty(prop)) {
-          var property = array[i].files[prop];
+    for (var i = 0; i < gists.length; i++) {
+      for (var prop in gists[i].files) {
+        if (gists[i].files.hasOwnProperty(prop)) {
+          var property = gists[i].files[prop];
           if ((!type || property.type === type) && (!language || property.language === language)) {
             arrOfFiles.push(property);
           }
@@ -38,6 +38,14 @@ define(function () {
     return arrOfFiles.map(function (file) {
       return file.filename;
     });
+  };
+
+  Model.prototype.getFileNamesPromise = function (criteriaObj) {
+    return this.getAllGists(criteriaObj.userName)
+    .then(function (gists) {
+      var filteredGists = this.filterFiles(gists, criteriaObj.type, criteriaObj.lang);
+      return this.filterByName(filteredGists);
+    }.bind(this));
   };
 
   return Model;
