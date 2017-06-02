@@ -1,12 +1,8 @@
-### To install run
+### To install packages:
     npm i
 
-### To run
+### To run project:
 
     npm start
-
-### To see whats going on
-
-open browser at [link](http://localhost:8080)
 
 [![Build Status](https://travis-ci.org/yaroslavputria/intern-test-project.svg?branch=master)](https://travis-ci.org/yaroslavputria/intern-test-project)
